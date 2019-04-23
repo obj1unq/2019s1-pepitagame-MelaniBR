@@ -1,6 +1,6 @@
 import ciudades.*
 import wollok.game.*
-
+import comidas.*
 object pepita {
 	var property energia = 100
 	var property ciudad = buenosAires 
@@ -23,17 +23,14 @@ object pepita {
 	method energiaParaVolar(distancia) = 15 + 5 * distancia
 
 	method move(nuevaPosicion) {
-		
-		if (self.puedeVolarHacia(nuevaPosicion) and ciudad!=nuevaPosicion ){
-		energia -= self.energiaParaVolar(position.distance(nuevaPosicion))
-				self.position(nuevaPosicion)} 	
-				else {game.say(self,"No tengo Energia ")}
+	 energia-= self.energiaParaVolar(position.distance(nuevaPosicion))	
+		self.position(nuevaPosicion)
 }	
 
 	method puedeVolarHacia(nuevaPosicion) =self.energiaParaVolar(position.distance(nuevaPosicion)) < energia
 	
 	method volaYCome(comida){
-				self.move(comida.position())
+				self.position(comida.position())
 				self.come(comida)
 				game.removeVisual(comida)
 	}	

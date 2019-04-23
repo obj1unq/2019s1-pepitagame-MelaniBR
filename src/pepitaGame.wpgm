@@ -21,7 +21,7 @@ program PepitaGame {
 //	TECLADO
 	keyboard.h().onPressDo { game.say(pepita, "Hola chiques!") }
 
-	keyboard.v().onPressDo { pepita.volaHacia(villaGesell) }
+    keyboard.v().onPressDo { pepita.volaHacia(villaGesell) }
 	keyboard.b().onPressDo { pepita.volaHacia(buenosAires) }
 
 	keyboard.up().onPressDo { pepita.move(pepita.position().up(1)) }
