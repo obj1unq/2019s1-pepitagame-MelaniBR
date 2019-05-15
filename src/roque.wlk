@@ -1,7 +1,7 @@
 import pepita.*
 import ciudades.*
 import wollok.game.*
-
+import niveles.*
 object roque {
    
    var property mochila = null
@@ -25,16 +25,24 @@ object roque {
 			mochila = null
 		}
 	}
-	
+	method encontroAlgo(alguien){
+		alguien.saludar()
+		self.saludar()
+	}
+	method saludar(){
+		game.say(self,"hola tu ")
+	}
 		
 	
 	method soltar(comida) {
 		game.addVisualIn(comida, self.randomPositionInGame())
-		game.whenCollideDo(comida, { entrenador => entrenador.tomarComida(comida)})
 	}
 
 	method randomPositionInGame() {
 		return game.at(1.randomUpTo(10).truncate(0), 1.randomUpTo(10).truncate(0))
 	}
-
+	method tirarComida(comida){
+		
+		game.addVisualIn(comida,self.position())
+	}
 }

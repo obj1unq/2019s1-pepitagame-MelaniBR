@@ -1,5 +1,9 @@
 import wollok.game.*
-object manzana {
+
+
+
+
+class Manzana {
 	var property position = game.center()
 	method image() = "manzana.png"
 	method energia() = 80
@@ -11,7 +15,7 @@ object manzana {
 	}
 }
 
-object alpiste {
+class Alpiste {
 	var property position = game.origin()
 	method image() = "alpiste.png"
 	method teEncuentro(alguien){

@@ -14,17 +14,16 @@ program PepitaGame {
 	game.ground("suelo.png")
 
 //	VISUALES
-	game.addVisual(alpiste)
-	game.addVisual(manzana)
+	game.addVisual(new Alpiste())
+	game.addVisual(new Manzana())
 	game.addVisual(buenosAires)
 	game.addVisual(villaGesell)
 	game.addVisual(pepita)
 	game.addVisual(roque)
 
 // COLISIONES
-//	game.whenCollideDo(manzana, {ave => ave.comer(manzana)})
-//	game.whenCollideDo(alpiste, {ave => ave.comer(alpiste)})
-	game.whenCollideDo(roque, {cosa => cosa.teEncuentro(roque)})
+ 	game.whenCollideDo(pepita, {cosa => cosa.encontroAlgo(pepita)})
+	//game.whenCollideDo(roque, {cosa => cosa.teEncuentro(roque)})
 	
 	
 
@@ -40,14 +39,15 @@ program PepitaGame {
 	keyboard.a().onPressDo { pepita.move(pepita.position().left(1)) }
 	keyboard.d().onPressDo { pepita.move(pepita.position().right(1)) }
 	
-	keyboard.m().onPressDo {pepita.volaYCome(manzana)}
-	keyboard.a().onPressDo {pepita.volaYCome(alpiste)}
+	keyboard.m().onPressDo {pepita.volaYCome(new Manzana())}
+	keyboard.a().onPressDo {pepita.volaYCome(new Alpiste())}
 	
 	keyboard.up().onPressDo { roque.move(roque.position().up(1)) }
 	keyboard.down().onPressDo { roque.move(roque.position().down(1)) }
 	keyboard.left().onPressDo { roque.move(roque.position().left(1)) }
 	keyboard.right().onPressDo { roque.move(roque.position().right(1)) }
-
+	keyboard.l().onPressDo{roque.tirarComida(new Alpiste())}
+	keyboard.m().onPressDo{roque.tirarComida(new Manzana())}
 //	START
 	game.start()
 }

@@ -40,4 +40,8 @@ method teEncuentro(alguien){
 	alguien.darComida(self)
 }	
 
+method saludar(){
+		game.say(self,"hola tu ")
+		
+	}
 }
