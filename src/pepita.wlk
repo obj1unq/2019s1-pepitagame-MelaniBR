@@ -17,14 +17,16 @@ object pepita {
 		if (ciudad != unaCiudad) {
 			self.move(unaCiudad.position())
 			ciudad = unaCiudad} 
-				else {game.say(self,"Ya estoy e ahi")}
+				else {game.say(self,"Ya estoy en ahi ")}
 	}
 
 	method energiaParaVolar(distancia) = 15 + 5 * distancia
 
 	method move(nuevaPosicion) {
+	if (self.puedeVolarHacia(nuevaPosicion)){
 	 energia-= self.energiaParaVolar(position.distance(nuevaPosicion))	
-		self.position(nuevaPosicion)
+		self.position(nuevaPosicion)}
+					else game.say(self, "Dame de comer primero!") 
 }	
 
 	method puedeVolarHacia(nuevaPosicion) =self.energiaParaVolar(position.distance(nuevaPosicion)) < energia
@@ -34,5 +36,8 @@ object pepita {
 				self.come(comida)
 				game.removeVisual(comida)
 	}	
-	
+method teEncuentro(alguien){
+	alguien.darComida(self)
+}	
+
 }
